@@ -92,7 +92,12 @@ public static void main(String[] args) {
                 row[11] = "\"" + keyboard.nextLine() + "\"";
 
                 windData.add(row);
-             }else if (input.equals("5")) {
+             
+             }
+             else if(input.equals("3")){
+
+             }
+             else if (input.equals("5")) {
                 System.out.print("filename: ");
                 String filename = keyboard.nextLine();
                 try {
@@ -115,14 +120,11 @@ for (String[] row : windData.subList(1, windData.size())) {
    sum += value;
 }
 return sum;
-}
+{}
 while (!input.equals("Q")) {
       System.out.println("1. Read Data From File");
       System.out.println("2. Add a wind turbine location");
       System.out.println("3. Total Number of Turbines");
-
-…
-…
 
 else if (input.equals("3")) {                
      System.out.println("This data set contains " + countWindTurbines(windData) + " wind turbines.");
