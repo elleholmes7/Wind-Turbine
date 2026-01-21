@@ -4,6 +4,7 @@ import java.io.PrintWriter; //for printing to a file
 import java.io.IOException; //Exception that can be thrown by File and Scanner
 import java.util.ArrayList;
 
+public class WindTurbine{
 public static ArrayList<String[]> readDataFromFile(String filename) throws IOException
 {
     ArrayList<String[]> csvData = new ArrayList<String[]>();
@@ -44,16 +45,18 @@ public static void writeDataToFile(ArrayList<String[]> csvData, String filename)
     out.close();
 }
 public static int countWindTurbines(ArrayList<String[]> windData) {
-    int sum = 0;
-        //go through all but the first row (which is the headings)
-    for (String[] row : windData.subList(1, windData.size())) {
-        String numTurbines = row[9];
-        numTurbines = numTurbines.replace("\"", "");
-        int value = Integer.parseInt(numTurbines);
-        sum += value;
-    }
-    return sum;
-    }
+int sum = 0;
+//go through all but the first row (which is the headings)
+for (String[] row : windData.subList(1, windData.size())) {
+   String numTurbines = row[9];
+   numTurbines = numTurbines.replace("\"", "");
+   int value = Integer.parseInt(numTurbines);
+   sum += value;
+}
+return sum;
+}
+
+
 public static ArrayList<String> stateList(ArrayList<String[]> windData){
     ArrayList<String> stateList = new ArrayList<>();
     for(String[] row : windData.subList(1, windData.size())) {
@@ -63,23 +66,22 @@ public static ArrayList<String> stateList(ArrayList<String[]> windData){
             stateList.add(state);
         }
     }
-        return stateList;
+    return stateList;
 }
-public static int countWindTurbinesInState(ArrayList<String[]> windData, String stateWanted){
+public static int countWindTurbinesInState(ArrayList<String[]> windData, String stateInput){
     int sum = 0;
-        //go through all but the first row (which is the headings)
     for (String[] row : windData.subList(1, windData.size())) {
     String state = row[0];
     state = state.replace("\"", "");
-    if (stateWanted.equals(state)) {
-        String numTurbines = row[9];
-        numTurbines = numTurbines.replace("\"", "");
-        int value = Integer.parseInt(numTurbines);
-        sum += value;
+        if (stateInput.equals(state)) {
+            String numTurbines = row[9];
+            numTurbines = numTurbines.replace("\"", "");
+            int value = Integer.parseInt(numTurbines);
+            sum += value;
+        }
     }
-    }
-        return sum;
-    }
+    return sum;
+}
 public static void main(String[] args) {
         ArrayList<String[]> windData = new ArrayList<String[]>();
         Scanner keyboard = new Scanner(System.in);
@@ -159,4 +161,5 @@ public static void main(String[] args) {
             }
         }
     }
+}
 }
